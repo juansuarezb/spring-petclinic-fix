@@ -31,8 +31,7 @@ class WebConfigurationTest {
         LocaleResolver localeResolver = applicationContext.getBean(LocaleResolver.class);
 
         // ASSERT
-        assertThat(localeResolver).isNotNull();
-        assertThat(localeResolver).isInstanceOf(SessionLocaleResolver.class);
+        assertThat(localeResolver).isNotNull().isInstanceOf(SessionLocaleResolver.class);
     }
 
     @Test
@@ -52,8 +51,7 @@ class WebConfigurationTest {
         LocaleResolver resolver = webConfiguration.localeResolver();
 
         // ASSERT
-        assertThat(resolver).isInstanceOf(SessionLocaleResolver.class);
-        assertThat(resolver).isNotNull();
+        assertThat(resolver).isInstanceOf(SessionLocaleResolver.class).isNotNull();
     }
 
     @Test
