@@ -279,7 +279,7 @@ class OwnerTest {
 			owner.getPets().add(pet);
 
 			Visit visit = new Visit();
-			visit.setDescription("Vacunacion antirabica");
+			visit.setDescription("Vacunación antirrábica");
 
 			// ACT
 			owner.addVisit(1, visit);
@@ -340,16 +340,11 @@ class OwnerTest {
 			owner.setCity("Guayaquil");
 			owner.setTelephone("0984567890");
 
-			// ACT
-			String result = owner.toString();
+		// ACT
+		String result = owner.toString();
 
-			// ASSERT
-			assertThat(result).contains("id = 1");
-			assertThat(result).contains("lastName = 'Morocho'");
-			assertThat(result).contains("firstName = 'Carlos'");
-			assertThat(result).contains("address = 'Calle Sucre 456 y Bolivar'");
-			assertThat(result).contains("city = 'Guayaquil'");
-			assertThat(result).contains("telephone = '0984567890'");
+		// ASSERT
+		assertThat(result).contains("id = 1", "lastName = 'Morocho'", "firstName = 'Carlos'", "address = 'Calle Sucre 456 y Bolivar'", "city = 'Guayaquil'", "telephone = '0984567890'");
 		}
 
 		@Test
