@@ -12,22 +12,21 @@ import jakarta.validation.constraints.NotBlank;
 @MappedSuperclass
 public class NamedEntity extends BaseEntity {
 
-	@Column
-	@NotBlank
-	private String name;
+    @Column
+    @NotBlank
+    private String name;
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		String name = this.getName();
-		return (name != null) ? name : "<null>";
-	}
-
+    @Override
+    public String toString() {
+        String currentName = this.getName();
+        return (currentName != null) ? currentName : "<null>";
+    }
 }
