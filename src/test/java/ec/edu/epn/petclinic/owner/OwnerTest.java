@@ -167,6 +167,21 @@ class OwnerTest {
 		}
 
 		@Test
+		@DisplayName("Should return null when pet not found by name")
+		void testGetPetByNameNotFound() {
+			// ARRANGE
+			Pet pet = new Pet();
+			pet.setName("Barbu");
+			owner.addPet(pet);
+
+			// ACT
+			Pet foundPet = owner.getPet("Negrito");
+
+			// ASSERT
+			assertThat(foundPet).isNull();
+		}
+
+		@Test
 		@DisplayName("Should find pet by id")
 		void testGetPetById() {
 			// ARRANGE
@@ -181,6 +196,22 @@ class OwnerTest {
 			// ASSERT
 			assertThat(foundPet).isNotNull();
 			assertThat(foundPet.getId()).isEqualTo(1);
+		}
+
+		@Test
+		@DisplayName("Should return null when pet not found by id")
+		void testGetPetByIdNotFound() {
+			// ARRANGE
+			Pet pet = new Pet();
+			pet.setId(1);
+			pet.setName("Toby");
+			owner.getPets().add(pet);
+
+			// ACT
+			Pet foundPet = owner.getPet(999);
+
+			// ASSERT
+			assertThat(foundPet).isNull();
 		}
 
 		@Test
@@ -254,6 +285,40 @@ class OwnerTest {
 			assertThat(pet.getVisits().iterator().next().getDescription()).isEqualTo("Vacunacion antirabica");
 		}
 
+		@Test
+		@DisplayName("Should throw exception when petId is null")
+		void testAddVisitNullPetId() {
+			// ARRANGE
+			Visit visit = new Visit();
+
+			// ACT & ASSERT
+			assertThatThrownBy(() -> owner.addVisit(null, visit))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("Pet identifier must not be null");
+		}
+
+		@Test
+		@DisplayName("Should throw exception when visit is null")
+		void testAddVisitNullVisit() {
+			// ARRANGE - nothing needed
+
+			// ACT & ASSERT
+			assertThatThrownBy(() -> owner.addVisit(1, null))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("Visit must not be null");
+		}
+
+		@Test
+		@DisplayName("Should throw exception when pet not found")
+		void testAddVisitPetNotFound() {
+			// ARRANGE
+			Visit visit = new Visit();
+
+			// ACT & ASSERT
+			assertThatThrownBy(() -> owner.addVisit(999, visit))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining("Invalid Pet identifier");
+		}
 	}
 
 	@Nested
