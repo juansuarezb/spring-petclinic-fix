@@ -37,8 +37,7 @@ class PetTypeRepositoryIntegrationTest {
 		List<PetType> result = petTypeRepository.findPetTypes();
 
 		// ASSERT
-		assertThat(result).isNotNull();
-		assertThat(result).hasSizeGreaterThanOrEqualTo(2);
+		assertThat(result).isNotNull().hasSizeGreaterThanOrEqualTo(2);
 	}
 
 	@Test
@@ -61,8 +60,7 @@ class PetTypeRepositoryIntegrationTest {
 		List<PetType> result = petTypeRepository.findPetTypes();
 
 		// ASSERT
-		assertThat(result).isNotNull();
-		assertThat(result).hasSizeGreaterThanOrEqualTo(3);
+		assertThat(result).isNotNull().hasSizeGreaterThanOrEqualTo(3);
 
 		// Find our test types and verify ordering
 		List<String> names = result.stream().map(PetType::getName).toList();
@@ -108,8 +106,6 @@ class PetTypeRepositoryIntegrationTest {
 	@Test
 	@DisplayName("Should return empty when pet type not found by id")
 	void testFindByIdNotFound() {
-		// ARRANGE - no pet type with id 9999
-
 		// ACT
 		var result = petTypeRepository.findById(9999);
 
