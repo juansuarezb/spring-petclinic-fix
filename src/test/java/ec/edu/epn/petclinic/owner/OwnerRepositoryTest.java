@@ -11,6 +11,12 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for {@link OwnerRepository}.
+ * Uses @DataJpaTest for JPA repository testing with H2 in-memory database.
+ *
+ * @author Dome
+ */
 @DataJpaTest
 class OwnerRepositoryIntegrationTest {
 

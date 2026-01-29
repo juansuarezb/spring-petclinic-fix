@@ -26,6 +26,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Unit tests for {@link OwnerController} using MockMvc.
+ *
+ * @author Dome
+ */
 @WebMvcTest(OwnerController.class)
 @WithMockUser
 class OwnerControllerTest {
