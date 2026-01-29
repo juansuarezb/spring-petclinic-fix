@@ -286,7 +286,7 @@ class OwnerTest {
 
 			// ASSERT
 			assertThat(pet.getVisits()).hasSize(1);
-			assertThat(pet.getVisits().iterator().next().getDescription()).isEqualTo("Vacunacion antirabica");
+			assertThat(pet.getVisits().iterator().next().getDescription()).isEqualTo("Vacunación antirrábica");
 		}
 
 		@Test
