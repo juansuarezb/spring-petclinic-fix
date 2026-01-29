@@ -31,8 +31,8 @@ public class SecurityConfig {
             )
             .httpBasic(Customizer.withDefaults());
 
-        http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
-            
+        http.headers(headers -> headers.frameOptions(org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig::disable));
+
         return http.build();
     }
 }
